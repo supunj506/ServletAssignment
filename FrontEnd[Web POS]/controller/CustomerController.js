@@ -10,7 +10,7 @@ import {Customer} from "../model/Customer.js";
 
 let  array=[];
 const customerData = "CUSTOMER";
-
+/*
 
 loadTable();
 document.getElementById("addCus").addEventListener("click", function () {
@@ -139,7 +139,170 @@ $('#customer_table ').on('click','tr',(event)=>{
     $('#inputCusName').val(cusName);
     $('#inputCusAddress').val(cusAddress);
     $('#inputCusEmail').val(cusEmail);
+});*/
+
+
+    $("#inputCusId").focus();
+
+    let cusId;
+    let cusName;
+    let cusAddress;
+    let cusEmail;
+    let validatedCustomer;
+
+    /* ----------------validation start--------------------------*/
+    var cusIdRegex =/^(C)[0-9]{3}$/ ;
+    var cusNameRegex = /^[A-z ]{3,30}$/;
+    var cusEmailRegex = /^[a-z0-9]{4,40}@(gmail|yahoo|ymail|email).com$/;
+    var cuAddressRegex = /^[A-z0-9/]{4,40}$/;
+    function validate(inputId, text,regex ) {
+    if(regex.test(text)){
+    $(inputId).css('outline-color','greenyellow');
+    return true;
+
+}else {
+    $(inputId).css('outline-color','red');
+    return false;
+}
+}
+
+    $('#inputCusId').keyup(function (event){
+    cusId = $(this).val();
+    validatedCustomer = validate('#inputCusId',cusId,cusIdRegex);
+    if(event.key==="Enter" && cusId!=="C000" && cusId!=="C0000" && cusId!=="C0000"){
+    if(validate('#inputCusId',cusId,cusIdRegex)){
+    $('#inputCusName').focus();
+
+}
+}
 });
+
+    $('#inputCusName').keyup(function (event){
+    cusName = $(this).val();
+    validatedCustomer = validate('#inputCusName',cusName,cusNameRegex);
+    if(event.key==="Enter"){
+    if(validate('#inputCusName',cusName,cusNameRegex)){
+    $('#inputCusAddress').focus();
+}
+}
+});
+
+    $('#inputCusAddress').keyup(function (event){
+    cusAddress = $(this).val();
+    validatedCustomer = validate('#inputCusAddress',cusAddress,cuAddressRegex);
+    if(event.key==="Enter"){
+    if(validate('#inputCusAddress',cusAddress,cuAddressRegex)){
+    $('#inputCusEmail').focus();
+}
+}
+});
+
+    $('#inputCusEmail').keyup(function (event){
+    cusEmail = $(this).val();
+    validatedCustomer = validate('#inputCusEmail',cusEmail,cusEmailRegex);
+    if (event.key==="Enter"){
+    alert("Do you want to add this customer ???");
+    addCustomer();
+}
+});
+
+    function emptyInput(){
+
+    let cusId = $("#inputCusId").val();
+    let cusName = $("#inputCusName").val();
+    let cusAddress = $("#inputCusAddress").val();
+    let cusEmail = $("#inputCusEmail").val();
+
+    if(cusId==="" || cusName==="" || cusAddress==="" || cusEmail===""){
+    return true;
+}else{
+    return false
+}
+
+}
+
+    let customerIdArray=[];
+
+    function existId( currentId) {
+    let tdCount=$("#cusTBody>tr").children().length;
+    let index=0;
+
+    for (let i = 0; i < tdCount ; i++) {
+    let id = $("#cusTBody>tr").children().eq(i).text();
+    customerIdArray[index]=id;
+    i+=3;
+    index++;
+}
+    let inTheArray = false  ;
+
+    for(let z=0;z<customerIdArray.length;z++){
+    if(currentId===customerIdArray[z]){
+    inTheArray=true;
+}
+}
+    return inTheArray;
+
+
+}
+
+    /* ----------------validation end-----------------------------*/
+
+
+    /* ----------------ADD Customer start-----------------------------*/
+
+    $('#addCus').click(function addCustomer() {
+    if(validatedCustomer && !emptyInput() && !existId($("#inputCusId").val()) ){
+    let customer = `<tr><td>${cusId}</td><td>${cusName}</td><td>${cusAddress}</td><td>${cusEmail}</td></tr>`;
+    $("#customer_table").append(customer);
+
+    $('#customer_table>tbody>tr').off();
+
+    $("#customer_table>tbody>tr").click(function () {
+
+    let id = $(this).children().eq("0").text();
+    let name = $(this).children().eq("1").text();
+    let address = $(this).children().eq("2").text();
+    let email = $(this).children().eq("3").text();
+
+    $("#inputCusId").val(id);
+    $("#inputCusName").val(name);
+    $("#inputCusAddress").val(address);
+    $("#inputCusEmail").val(email);
+
+});
+
+    $("#customer_table>tbody>tr").dblclick(function () {
+    let b = confirm("Do You Want to remove this record ?");
+    if(b){
+    $(this).remove();
+}
+});
+}else {
+    alert("Check your input again !!!");
+}
+
+});
+
+    /* ----------------ADD Customer end-------------------------------*/
+
+
+    /* ----------------UPDATE Customer Start-------------------------------*/
+
+    $('#updateCus').click(function (){
+    let id = $("#inputCusId").val();
+    if(!emptyInput() && existId(id)){
+    let customer = `<tr><td>${cusId}</td><td>${cusName}</td><td>${cusAddress}</td><td>${cusEmail}</td></tr>`;
+    $("#customer_table").append(customer);
+
+}else{
+    alert("Check your input again !!!");
+}
+
+
+})
+
+    /* ----------------UPDATE Customer End---------------------------------*/
+
 
 
 
