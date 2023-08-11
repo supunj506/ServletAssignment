@@ -8,7 +8,7 @@
 
 import {Customer} from "../model/Customer.js";
 
-let  array=[];
+let array = [];
 const customerData = "CUSTOMER";
 /*
 
@@ -142,166 +142,183 @@ $('#customer_table ').on('click','tr',(event)=>{
 });*/
 
 
-    $("#inputCusId").focus();
+$("#inputCusId").focus();
 
-    let cusId;
-    let cusName;
-    let cusAddress;
-    let cusEmail;
-    let validatedCustomer;
+let cusId;
+let cusName;
+let cusAddress;
+let cusEmail;
+let validatedCustomer;
 
-    /* ----------------validation start--------------------------*/
-    var cusIdRegex =/^(C)[0-9]{3}$/ ;
-    var cusNameRegex = /^[A-z ]{3,30}$/;
-    var cusEmailRegex = /^[a-z0-9]{4,40}@(gmail|yahoo|ymail|email).com$/;
-    var cuAddressRegex = /^[A-z0-9/]{4,40}$/;
-    function validate(inputId, text,regex ) {
-    if(regex.test(text)){
-    $(inputId).css('outline-color','greenyellow');
-    return true;
+/* ----------------validation start--------------------------*/
+var cusIdRegex = /^(C)[0-9]{3}$/;
+var cusNameRegex = /^[A-z ]{3,30}$/;
+var cusEmailRegex = /^[a-z0-9]{4,40}@(gmail|yahoo|ymail|email).com$/;
+var cuAddressRegex = /^[A-z0-9/]{4,40}$/;
 
-}else {
-    $(inputId).css('outline-color','red');
-    return false;
+function validate(inputId, text, regex) {
+    if (regex.test(text)) {
+        $(inputId).css('outline-color', 'greenyellow');
+        return true;
+
+    } else {
+        $(inputId).css('outline-color', 'red');
+        return false;
+    }
 }
-}
 
-    $('#inputCusId').keyup(function (event){
+$('#inputCusId').keyup(function (event) {
     cusId = $(this).val();
-    validatedCustomer = validate('#inputCusId',cusId,cusIdRegex);
-    if(event.key==="Enter" && cusId!=="C000" && cusId!=="C0000" && cusId!=="C0000"){
-    if(validate('#inputCusId',cusId,cusIdRegex)){
-    $('#inputCusName').focus();
+    validatedCustomer = validate('#inputCusId', cusId, cusIdRegex);
+    if (event.key === "Enter" && cusId !== "C000" && cusId !== "C0000" && cusId !== "C0000") {
+        if (validate('#inputCusId', cusId, cusIdRegex)) {
+            $('#inputCusName').focus();
 
-}
-}
+        }
+    }
 });
 
-    $('#inputCusName').keyup(function (event){
+$('#inputCusName').keyup(function (event) {
     cusName = $(this).val();
-    validatedCustomer = validate('#inputCusName',cusName,cusNameRegex);
-    if(event.key==="Enter"){
-    if(validate('#inputCusName',cusName,cusNameRegex)){
-    $('#inputCusAddress').focus();
-}
-}
+    validatedCustomer = validate('#inputCusName', cusName, cusNameRegex);
+    if (event.key === "Enter") {
+        if (validate('#inputCusName', cusName, cusNameRegex)) {
+            $('#inputCusAddress').focus();
+        }
+    }
 });
 
-    $('#inputCusAddress').keyup(function (event){
+$('#inputCusAddress').keyup(function (event) {
     cusAddress = $(this).val();
-    validatedCustomer = validate('#inputCusAddress',cusAddress,cuAddressRegex);
-    if(event.key==="Enter"){
-    if(validate('#inputCusAddress',cusAddress,cuAddressRegex)){
-    $('#inputCusEmail').focus();
-}
-}
+    validatedCustomer = validate('#inputCusAddress', cusAddress, cuAddressRegex);
+    if (event.key === "Enter") {
+        if (validate('#inputCusAddress', cusAddress, cuAddressRegex)) {
+            $('#inputCusEmail').focus();
+        }
+    }
 });
 
-    $('#inputCusEmail').keyup(function (event){
+$('#inputCusEmail').keyup(function (event) {
     cusEmail = $(this).val();
-    validatedCustomer = validate('#inputCusEmail',cusEmail,cusEmailRegex);
-    if (event.key==="Enter"){
-    alert("Do you want to add this customer ???");
-    addCustomer();
-}
+    validatedCustomer = validate('#inputCusEmail', cusEmail, cusEmailRegex);
+    if (event.key === "Enter") {
+        alert("Do you want to add this customer ???");
+        addCustomer();
+    }
 });
 
-    function emptyInput(){
+function emptyInput() {
 
     let cusId = $("#inputCusId").val();
     let cusName = $("#inputCusName").val();
     let cusAddress = $("#inputCusAddress").val();
     let cusEmail = $("#inputCusEmail").val();
 
-    if(cusId==="" || cusName==="" || cusAddress==="" || cusEmail===""){
-    return true;
-}else{
-    return false
-}
+    if (cusId === "" || cusName === "" || cusAddress === "" || cusEmail === "") {
+        return true;
+    } else {
+        return false
+    }
 
 }
 
-    let customerIdArray=[];
+let customerIdArray = [];
 
-    function existId( currentId) {
-    let tdCount=$("#cusTBody>tr").children().length;
-    let index=0;
+function existId(currentId) {
+    let tdCount = $("#cusTBody>tr").children().length;
+    let index = 0;
 
-    for (let i = 0; i < tdCount ; i++) {
-    let id = $("#cusTBody>tr").children().eq(i).text();
-    customerIdArray[index]=id;
-    i+=3;
-    index++;
-}
-    let inTheArray = false  ;
+    for (let i = 0; i < tdCount; i++) {
+        let id = $("#cusTBody>tr").children().eq(i).text();
+        customerIdArray[index] = id;
+        i += 3;
+        index++;
+    }
+    let inTheArray = false;
 
-    for(let z=0;z<customerIdArray.length;z++){
-    if(currentId===customerIdArray[z]){
-    inTheArray=true;
-}
-}
+    for (let z = 0; z < customerIdArray.length; z++) {
+        if (currentId === customerIdArray[z]) {
+            inTheArray = true;
+        }
+    }
     return inTheArray;
 
 
 }
 
-    /* ----------------validation end-----------------------------*/
-
-
-    /* ----------------ADD Customer start-----------------------------*/
-
-    $('#addCus').click(function addCustomer() {
-    if(validatedCustomer && !emptyInput() && !existId($("#inputCusId").val()) ){
-    let customer = `<tr><td>${cusId}</td><td>${cusName}</td><td>${cusAddress}</td><td>${cusEmail}</td></tr>`;
-    $("#customer_table").append(customer);
-
-    $('#customer_table>tbody>tr').off();
-
-    $("#customer_table>tbody>tr").click(function () {
-
-    let id = $(this).children().eq("0").text();
-    let name = $(this).children().eq("1").text();
-    let address = $(this).children().eq("2").text();
-    let email = $(this).children().eq("3").text();
-
-    $("#inputCusId").val(id);
-    $("#inputCusName").val(name);
-    $("#inputCusAddress").val(address);
-    $("#inputCusEmail").val(email);
-
-});
-
-    $("#customer_table>tbody>tr").dblclick(function () {
-    let b = confirm("Do You Want to remove this record ?");
-    if(b){
-    $(this).remove();
-}
-});
-}else {
-    alert("Check your input again !!!");
+function refreshValue() {
+    cusId = $("#inputCusId").val();
+    cusName = $("#inputCusName").val();
+    cusAddress = $("#inputCusAddress").val();
+    cusEmail = $("#inputCusEmail").val();
 }
 
+function getCustomer() {
+    return new customer(cusId, cusName, cusAddress, cusEmail);
+}
+
+/* ----------------validation end-----------------------------*/
+
+
+/* ----------------ADD Customer start-----------------------------*/
+
+$('#addCus').click(function addCustomer() {
+
+    if (validatedCustomer && !emptyInput() && !existId($("#inputCusId").val())) {
+        refreshValue();
+        let customer = getCustomer();
+        let jCustomer = JSON.stringify(customer);
+        createAjaxRequest('customer', 'POST', jCustomer)
+        let customerRow = `<tr><td>${cusId}</td><td>${cusName}</td><td>${cusAddress}</td><td>${cusEmail}</td></tr>`;
+        $("#customer_table").append(customerRow);
+
+        $('#customer_table>tbody>tr').off();
+
+        $("#customer_table>tbody>tr").click(function () {
+
+            let id = $(this).children().eq("0").text();
+            let name = $(this).children().eq("1").text();
+            let address = $(this).children().eq("2").text();
+            let email = $(this).children().eq("3").text();
+
+            $("#inputCusId").val(id);
+            $("#inputCusName").val(name);
+            $("#inputCusAddress").val(address);
+            $("#inputCusEmail").val(email);
+
+        });
+
+        $("#customer_table>tbody>tr").dblclick(function () {
+            let b = confirm("Do You Want to remove this record ?");
+            if (b) {
+                $(this).remove();
+            }
+        });
+    } else {
+        alert("Check your input again !!!");
+    }
+
 });
 
-    /* ----------------ADD Customer end-------------------------------*/
+/* ----------------ADD Customer end-------------------------------*/
 
 
-    /* ----------------UPDATE Customer Start-------------------------------*/
+/* ----------------UPDATE Customer Start-------------------------------*/
 
-    $('#updateCus').click(function (){
+$('#updateCus').click(function () {
     let id = $("#inputCusId").val();
-    if(!emptyInput() && existId(id)){
-    let customer = `<tr><td>${cusId}</td><td>${cusName}</td><td>${cusAddress}</td><td>${cusEmail}</td></tr>`;
-    $("#customer_table").append(customer);
+    if (!emptyInput() && existId(id)) {
+        let customer = `<tr><td>${cusId}</td><td>${cusName}</td><td>${cusAddress}</td><td>${cusEmail}</td></tr>`;
+        $("#customer_table").append(customer);
 
-}else{
-    alert("Check your input again !!!");
-}
+    } else {
+        alert("Check your input again !!!");
+    }
 
 
 })
 
-    /* ----------------UPDATE Customer End---------------------------------*/
+/* ----------------UPDATE Customer End---------------------------------*/
 
 
 

@@ -8,6 +8,7 @@
 
 
 export class Customer {
+
     constructor(cus_id,cus_name,cus_address,cus_email) {
 
         this._cus_id = cus_id;
