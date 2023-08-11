@@ -1,0 +1,553 @@
+<!--
+    * @author : Supun Jaysinghe
+    * Date    : 28 April 2023
+    * Time    : 11:55 AM
+    * Project : web_pos_system
+    * Created by IntelliJ IDEA.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<!--Document Metadata-->
+<head>
+    <meta charset="UTF-8">
+    <title>Super Mart</title>
+    <link href="asset/css_lib/normalize.css" rel="stylesheet">
+    <link href="/asset/logo/superMartLogo.png" rel="icon">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap" rel="stylesheet">
+    <meta content="Super mart,super,mart " name="keywords">
+    <meta content="Sri lanka largest market place" name="description">
+    <meta content="S.M.Jayasinghe" name="author">
+    <meta content="S.M.Jayasinghe" name="owner">
+    <meta content="width=device-width initial-scale=1" name="viewport">
+
+    <link rel="stylesheet" href="asset/Bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="asset/custom_css/main_form/Main.css">
+
+    <link rel="stylesheet" href="asset/custom_css/customer_form/customerForm.css">
+
+    <link rel="stylesheet" href="asset/custom_css/order_detail_form/orderDetailsForm.css">
+
+    <link rel="stylesheet" href="asset/custom_css/order_form/orderForm.css">
+
+    <link rel="stylesheet" href="asset/custom_css/item_form/itemForm.css">
+
+
+</head>
+<body>
+
+<header>
+
+    <section>
+        <img alt="logo.png" id="logo" src="asset/logo/superMartLogo.png">
+        <h2>Super Mart POS System</h2>
+    </section>
+
+    <section>
+        <div>
+            <h4>25-04-2023</h4>
+            <h4>Monday</h4>
+            <h4>12:23</h4>
+        </div>
+        <div>
+            <img alt="userImage.png" id="userImage" src="asset/image/UserImage.png">
+            <p>Supun Jayasinghe</p>
+        </div>
+    </section>
+</header>
+
+<main>
+
+    <aside>
+        <nav>
+            <div onclick="openForm('orderForm')">
+                <img alt="order.png" class="nav_icon" src="asset/icon/icons8-purchase-order-96.png">
+                <h4>Order</h4>
+            </div>
+
+            <div onclick="openForm('customerForm')">
+                <img alt="order.png" class="nav_icon" src="asset/icon/icons8-customer-64.png">
+                <h4>Customer</h4>
+            </div>
+            <div onclick="openForm('itemForm')">
+                <img alt="order.png" class="nav_icon" src="asset/icon/icons8-product-90.png">
+                <h4>Items</h4>
+            </div>
+            <div onclick="openForm('orderDetailsForm')">
+                <img alt="order.png" class="nav_icon" src="asset/icon/icons8-more-details-100.png">
+                <h4>Order Details</h4>
+            </div>
+        </nav>
+
+    </aside>
+
+    <section class="form active-form" id="orderForm">
+        <div>
+            <section id="makeOrderSect">
+                <div>
+                    <h2>Make Order</h2>
+                </div>
+                <div>
+                    <section>
+                        <div id="order_details">
+                            <div><p>Order Details</p></div>
+                            <div>
+                                <input placeholder=" Order ID" type="text">
+                                <input placeholder=" Customer ID" type="text">
+                            </div>
+                            <div><input placeholder=" Customer Name" type="text"></div>
+                            <div><input placeholder=" Date" type="text"></div>
+                            <div>
+                                <div><p>Search By</p></div>
+                                <input placeholder=" Order ID" type="text">
+                            </div>
+
+                        </div>
+                        <div id="item_details">
+                            <div><p>Item Details</p></div>
+                            <div>
+                                <input placeholder=" Item Code" type="text">
+                                <input placeholder=" Available QTY" type="text">
+                            </div>
+                            <div><input placeholder=" Item Name" type="text"></div>
+                            <div>
+                                <input placeholder=" Unit Price" type="text">
+                                <input placeholder=" Discount" type="text">
+                            </div>
+                            <div>
+                                <input placeholder=" Need QTY" type="text">
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div>
+                            <div>Delete</div>
+                            <div>Update</div>
+                            <div>Clear</div>
+                        </div>
+                        <div>
+                            <table border="1">
+                                <thead>
+                                <th>Order Id</th>
+                                <th>Customer Id</th>
+                                <th>Date</th>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
+                    </section>
+                </div>
+            </section>
+            <section id="purchOrderSect">
+                <div>
+                    <h2>Order ID: 001</h2>
+                </div>
+                <div>
+
+                    <div>
+                        <div>
+                            <p>⭐ IT-035 </p>
+                            <div>
+                                <p>RED Rice </p>
+                                <p>10Kg </p>
+                                <p>2300 RS</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p>⭐ IT-005 </p>
+                            <div>
+                                <p>Tikiri Mari </p>
+                                <p>2 Pck </p>
+                                <p>300 RS</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div>
+                        <p>Total Amount : </p>
+                        <p>15 000 RS</p>
+                    </div>
+
+                    <div>
+                        <div>Purchase Order</div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </section>
+
+    <section class="form" id="customerForm">
+        <div>
+            <div>
+                <h2>Manage Customer</h2>
+            </div>
+            <div>
+                <div>
+                    <div>
+                        <p>Customer Details</p>
+                    </div>
+                    <div>
+                        <input class="cusInput" id="inputCusId" placeholder=" Customer ID" type="text">
+                        <input class="cusInput" id="inputCusName" placeholder=" Name" type="text">
+                    </div>
+                    <div>
+                        <input class="cusInput" id="inputCusAddress" placeholder=" Address" type="text">
+                        <input class="cusInput" id="inputCusEmail" placeholder=" Email" type="email">
+                    </div>
+                    <div>
+                        <div id="searchBtn">Search By</div>
+                        <input class="cusInput" id="inputCusIdSearch" placeholder="Customer ID" type="text">
+                    </div>
+                </div>
+                <div>
+                    <div id="addCus">Add Customer</div>
+                    <div id="deleteCus">Delete</div>
+                    <div id="updateCus">Update</div>
+                    <div id="clearCus">Clear</div>
+
+                </div>
+                <div>
+                    <table class="table table-hover table-bordered" id="customer_table">
+                        <thead class="bg-info">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                        </thead>
+                        <tbody id="cusTBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section class="form" id="itemForm">
+            <div>
+                <div>
+                    <h2>Manage Item</h2>
+                </div>
+                <div>
+                    <div>
+                        <div>
+                            <p>Item Details</p>
+                        </div>
+                        <div>
+                            <input class="itemInput" id="inputItemId" placeholder=" Item Code" type="text">
+                            <input class="itemInput"  id="inputItemName" placeholder=" Name" type="text">
+                        </div>
+                        <div>
+                            <input  class="itemInput"  id="inputItemUnitPrice" placeholder=" Unite Price" type="text">
+                            <input class="itemInput"  id="inputItemQuantity" placeholder=" Quantity" type="text">
+                        </div>
+                        <div>
+                            <div>Search By</div>
+                            <input class="itemInput"  id="inputItemIdSearch" placeholder=" Item Code" type="text">
+                        </div>
+                    </div>
+                    <div>
+                        <div id="addItem">Add Item</div>
+                        <div id="deleteItem">Delete</div>
+                        <div id="updateItem">Update</div>
+                        <div id="clearItem">Clear</div>
+
+                    </div>
+                    <div>
+                        <table class="table table-hover table-bordered" id="item_table">
+                            <thead class="bg-info">
+                            <tr>
+                                <th scope="col">Item Code</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Quantity</th>
+                            </tr>
+                            </thead>
+                            <tbody id="itemTBody">
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+</main>
+<footer>
+    <p>Copyright @ 2023 All Right Reserved By Supun Madubhashitha</p>
+</footer>
+
+
+<script src="asset/Bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="asset/JQuery/jquery-3.6.1.min.js"></script>
+
+<!-----------------Navigation Script Start------------------->
+<script>
+    // let tabContents = document.getElementsByClassName("form");
+    //
+    // function openForm(paneName) {
+    //     let tabContent;
+    //     for (tabContent of tabContents) {
+    //         tabContent.classList.remove("active-form");
+    //     }
+    //     document.getElementById(paneName).classList.add("active-form")
+    // }
+    $("#itemForm").css('display', 'block');
+    $("#orderDetailsForm").css('display', 'none');
+    $("#orderForm").css('display', 'none');
+
+    $("#customerForm").css('display', 'none');
+
+</script>
+<!-----------------Navigation Script End-------------------->
+
+
+
+<!-----------------Customer Mange Script Start-------------------------------------------------------->
+
+
+<!-----------------Customer Mange Script End---------------------------------------------------------->
+
+
+
+
+<!-----------------item Mange Script Start------------------------------------------------------------->
+<script>
+    $("#inputItemId").focus();
+
+    let itemId;
+    let itemName;
+    let itemUnitPrice;
+    let itemQuantity;
+
+    let validatedItem;
+
+    /* ----------------validation start--------------------------*/
+    var itemIdRegex =/^(I)[0-9]{3}$/ ;
+    var itemNameRegex = /^[A-z0-9 ]{3,30}$/;
+    var itemUnitPriceRegex = /^[0-9]{1,5}$/;
+    var itemQuantityRegex = /^[0-9]{1,5}$/;
+    function validate(inputId, text,regex ) {
+        if(regex.test(text)){
+            $(inputId).css("outline-color","greenyellow");
+            return true;
+
+        }else {
+            $(inputId).css("outline-color","red");
+            return false;
+        }
+    }
+
+    // function regexTest(event,value,inputId,regexPattern,nextInputId){
+    //     if(regexPattern.test(value)){
+    //         $(inputId).css("outline-color","greenyellow");
+    //         return true;
+    //
+    //     }else {
+    //         $(inputId).css("outline-color","red");
+    //         return false;
+    //     }
+    //     if(event.key==="Enter"){
+    //         if(validate(inputId,value,regexPattern)){
+    //             $(nextInputId).focus();
+    //
+    //         }
+    //     }
+    //
+    // }
+
+    $('#inputItemId').keyup(function (event){
+        itemId = $(this).val();
+        validatedItem = validate('#inputItemId',itemId,itemIdRegex);
+        if(event.key==="Enter" && itemId!=="C000" && itemId!=="C0000" && itemId!=="C0000"){
+            if(validate('#inputCusId',itemId,itemIdRegex)){
+                $('#inputItemName').focus();
+
+            }
+        }
+
+    });
+
+    $('#inputItemName').keyup(function (event){
+        itemName = $(this).val();
+        validatedItem = validate('#inputItemName',itemName,itemNameRegex);
+        if(event.key==="Enter"){
+            if(validate('#inputCusName',itemName,itemNameRegex)){
+                $('#inputItemUnitPrice').focus();
+            }
+        }
+
+    });
+
+    $('#inputItemUnitPrice').keyup(function (event){
+        itemUnitPrice = $(this).val();
+        validatedItem = validate('#inputItemUnitPrice',itemUnitPrice,itemUnitPriceRegex);
+        if(event.key==="Enter"){
+            if(validate('#inputCusAddress',itemUnitPrice,itemUnitPriceRegex)){
+                $('#inputItemQuantity').focus();
+            }
+        }
+
+    });
+
+    $('#inputItemQuantity').keyup(function (event){
+        itemQuantity = $(this).val();
+        validatedItem = validate('#inputItemQuantity',itemQuantity,itemQuantityRegex);
+        if (event.key==="Enter"){
+            alert("Do you want to add this customer ???");
+        }
+    });
+
+    function emptyInput(){
+
+        let itemId = $("#inputItemId").val();
+        let itemName = $("#inputItemName").val();
+        let itemUnitPrice = $("#inputItemUnitPrice").val();
+        let itemQuantity = $("#inputItemQuantity").val();
+
+        if(itemId==="" || itemName==="" || itemUnitPrice==="" || itemQuantity===""){
+            return true;
+        }else{
+            return false
+        }
+
+    }
+
+    let itemIdArray=[];
+
+    function existId( currentId) {
+        let tdCount=$("#itemTBody>tr").children().length;
+        let index=0;
+
+        for (let i = 0; i < tdCount ; i++) {
+            let id = $("#itemTBody>tr").children().eq(i).text();
+            itemIdArray[index]=id;
+            i+=3;
+            index++;
+        }
+        let inTheArray = 0;
+
+        for(let z=0;z<itemIdArray.length;z++){
+            if(currentId===itemIdArray[z]){
+                inTheArray=z+1;
+            }
+        }
+        return inTheArray;
+
+
+    }
+
+    /* ----------------validation end-----------------------------*/
+
+
+    /* ----------------ADD Item start-----------------------------*/
+    $('#addItem').click(function addItem() {
+        if(validatedItem && !emptyInput() && existId($("#inputItemId").val())===0 ){
+            let item = `<tr><td>${itemId}</td><td>${itemName}</td><td>${itemUnitPrice}</td><td>${itemQuantity}</td></tr>`;
+            $("#item_table").append(item);
+
+            $('#item_table>tbody>tr').off();
+
+            $("#item_table>tbody>tr").click(function () {
+
+                let id = $(this).children().eq("0").text();
+                let name = $(this).children().eq("1").text();
+                let unitPrice = $(this).children().eq("2").text();
+                let qty = $(this).children().eq("3").text();
+
+                $("#inputItemId").val(id);
+                $("#inputItemName").val(name);
+                $("#inputItemUnitPrice").val(unitPrice);
+                $("#inputItemQuantity").val(qty);
+
+            });
+
+            $("#item_table>tbody>tr").dblclick(function () {
+                let b = confirm("Do You Want to remove this record ?");
+                if(b){
+                    $(this).remove();
+                }
+            });
+        }else {
+            alert("Check your input again !!!");
+        }
+
+    });
+
+    /* ----------------ADD Item end-------------------------------*/
+
+
+    /* ----------------UPDATE Item Start-------------------------------*/
+    $('#updateItem').click(function (){
+        let itemId = $("#inputItemId").val();
+        let itemName = $("#inputItemName").val();
+        let itemUnitPrice = $("#inputItemUnitPrice").val();
+        let itemQuantity = $("#inputItemQuantity").val();
+
+        const index = existId(itemId);
+
+        if(index>0 && !emptyInput()){
+            alert("in the System");
+            console.log($("#itemTBody").children().eq(index-1));
+            let item = `<tr><td>${itemId}</td><td>${itemName}</td><td>${itemUnitPrice}</td><td>${itemQuantity}</td></tr>`;
+        }else{
+            alert("not the System");
+        }
+
+
+    })
+    /* ----------------UPDATE Item End---------------------------------*/
+
+
+    /* ----------------Delete Item Start-------------------------------*/
+
+    $('#deleteItem').click(function (){
+        let itemId = $("#inputItemId").val();
+        const index = existId(itemId);
+        if(index>0 && !emptyInput()){
+            $("#itemTBody").children().eq(index-1).remove();
+        }else{
+            alert("not the System");
+        }
+
+    })
+    /* ----------------Delete Item End---------------------------------*/
+
+
+    /* ----------------Clear Item input Start-------------------------------*/
+
+    $('#clearItem').click(function (){
+        $("#inputItemId").val("");
+        $("#inputItemName").val("");
+        $("#inputItemUnitPrice").val("");
+        $("#inputItemQuantity").val("");
+    })
+    /* ----------------Clear Item input End---------------------------------*/
+
+</script>
+<!-----------------item Mange Script End------------------------------------------------------------------->
+
+
+<!--<script type="module" src="model/Customer.js"></script>-->
+<!--<script type="module" src="model/Item.js"></script>-->
+
+<!--<script type="module" src="controller/CustomerController.js"></script>-->
+<!--<script type="module" src="controller/ItemController.js"></script>-->
+</body>
+
+
+</html>
