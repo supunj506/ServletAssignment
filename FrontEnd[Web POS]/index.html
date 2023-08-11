@@ -297,20 +297,20 @@
 
 <!-----------------Navigation Script Start------------------->
 <script>
-    // let tabContents = document.getElementsByClassName("form");
-    //
-    // function openForm(paneName) {
-    //     let tabContent;
-    //     for (tabContent of tabContents) {
-    //         tabContent.classList.remove("active-form");
-    //     }
-    //     document.getElementById(paneName).classList.add("active-form")
-    // }
-    $("#itemForm").css('display', 'block');
+    let tabContents = document.getElementsByClassName("form");
+
+    function openForm(paneName) {
+        let tabContent;
+        for (tabContent of tabContents) {
+            tabContent.classList.remove("active-form");
+        }
+        document.getElementById(paneName).classList.add("active-form")
+    }
+/*    $("#itemForm").css('display', 'block');
     $("#orderDetailsForm").css('display', 'none');
     $("#orderForm").css('display', 'none');
 
-    $("#customerForm").css('display', 'none');
+    $("#customerForm").css('display', 'none');*/
 
 </script>
 <!-----------------Navigation Script End-------------------->
@@ -545,7 +545,7 @@
 <!--<script type="module" src="model/Customer.js"></script>-->
 <!--<script type="module" src="model/Item.js"></script>-->
 
-<!--<script type="module" src="controller/CustomerController.js"></script>-->
+<script type="module" src="controller/CustomerController.js"></script>
 <!--<script type="module" src="controller/ItemController.js"></script>-->
 </body>
 

@@ -254,7 +254,7 @@ function refreshValue() {
 }
 
 function getCustomer() {
-    return new customer(cusId, cusName, cusAddress, cusEmail);
+    return new Customer(cusId, cusName, cusAddress, cusEmail);
 }
 
 /* ----------------validation end-----------------------------*/
@@ -267,8 +267,9 @@ $('#addCus').click(function addCustomer() {
     if (validatedCustomer && !emptyInput() && !existId($("#inputCusId").val())) {
         refreshValue();
         let customer = getCustomer();
+        console.log(customer)
         let jCustomer = JSON.stringify(customer);
-        createAjaxRequest('customer', 'POST', jCustomer)
+        createAjaxRequest("customer", 'POST', jCustomer)
         let customerRow = `<tr><td>${cusId}</td><td>${cusName}</td><td>${cusAddress}</td><td>${cusEmail}</td></tr>`;
         $("#customer_table").append(customerRow);
 
